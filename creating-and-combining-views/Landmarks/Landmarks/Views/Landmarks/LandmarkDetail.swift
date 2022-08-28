@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct LandmarkDetails: View {
+    @EnvironmentObject var modelData : ModelData
     var landmark: Landmark
+    var landmarkIndex : Int {
+        modelData.landmarks.firstIndex(where: {$0.id == landmark.id})!
+    }
     var body: some View {
         // If this was still VStack, the circle image's location
         // will move to a bit lower
@@ -21,9 +25,13 @@ struct LandmarkDetails: View {
                 .padding(.bottom, -130)
             
             VStack(alignment: .leading) {
-                Text(landmark.name)
-                    .font(.title)
-                .foregroundColor(.black)
+                HStack {
+                    Text(landmark.name)
+                        .font(.title)
+                    .foregroundColor(.black)
+                    
+                    FavoriteButton(isSet:$modelData.landmarks[landmarkIndex].isFavorite)
+                }
                 
                 HStack {
                     Text(landmark.park)
@@ -47,5 +55,6 @@ struct LandmarkDetails: View {
 struct LandmarkDetails_Previews: PreviewProvider {
     static var previews: some View {
         LandmarkDetails(landmark: ModelData().landmarks[0])
+            .environmentObject(ModelData())
     }
 }
