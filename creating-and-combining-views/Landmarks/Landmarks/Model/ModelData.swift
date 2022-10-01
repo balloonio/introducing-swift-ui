@@ -15,6 +15,9 @@ class ModelData: ObservableObject {
     var categories2Landmarks : [String: [Landmark]] {
         Dictionary(grouping: landmarks, by: { $0.category.rawValue})
     }
+    var featuredLandmarks : [Landmark] {
+        landmarks.filter {$0.isFeatured}
+    }
 }
 
 func load<T: Decodable>(_ fileName: String) -> T {

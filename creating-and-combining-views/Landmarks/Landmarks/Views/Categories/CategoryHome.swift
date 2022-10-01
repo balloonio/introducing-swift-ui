@@ -13,8 +13,7 @@ struct CategoryHome: View {
         NavigationView {
             List {
                 ForEach(modelData.categories2Landmarks.keys.sorted(), id: \.self) { key in
-                    Text(key)
-                }
+                    CategoryRow(categoryName: key, items: modelData.categories2Landmarks[key]!)                }
             }
             .navigationTitle("Featured")
 
