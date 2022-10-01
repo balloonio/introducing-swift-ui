@@ -12,13 +12,24 @@ struct CategoryHome: View {
     var body: some View {
         NavigationView {
             List {
+                NavigationLink {
+                    LandmarkDetails(landmark: modelData.featuredLandmarks[0])
+                } label: {
+                    modelData.featuredLandmarks[0].image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 200)
+                        .clipped()
+                        .listRowInsets(EdgeInsets())
+                }
+                
                 ForEach(modelData.categories2Landmarks.keys.sorted(), id: \.self) { key in
-                    CategoryRow(categoryName: key, items: modelData.categories2Landmarks[key]!)                }
+                    CategoryRow(categoryName: key, items: modelData.categories2Landmarks[key]!)
+                }
+                .listRowInsets(EdgeInsets())
             }
             .navigationTitle("Featured")
-
         }
-        
     }
 }
 

@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var tabMode : Tab = .tile
+    
+    enum Tab {
+        case tile
+        case list
+    }
+    
     var body: some View {
-        LandmarkList()
-        
+        TabView(selection: $tabMode) {
+            CategoryHome()
+                .tabItem{
+                    Label("Featured", systemImage: "star")
+                }
+                .tag(Tab.tile)
+            
+            LandmarkList()
+                .tabItem{
+                    Label("List", systemImage: "list.bullet")
+                }
+                .tag(Tab.list)
+        }
     }
 }
 

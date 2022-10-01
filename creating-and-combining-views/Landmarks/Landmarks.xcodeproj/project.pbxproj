@@ -219,11 +219,11 @@
 		0458F59B28B2B5DA003F732A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0458F56828B0937C003F732A /* ContentView.swift */,
 				0424EF3B28BDB7C400268A92 /* Hikes */,
 				04A6136128BBCB1E00C8A60B /* Badges */,
 				04A6135E28BBC50300C8A60B /* Landmarks */,
 				04A6135D28BBC4F200C8A60B /* Helpers */,
-				0458F56828B0937C003F732A /* ContentView.swift */,
 				0436C15328E7E55C0052ECF4 /* Categories */,
 			);
 			path = Views;
