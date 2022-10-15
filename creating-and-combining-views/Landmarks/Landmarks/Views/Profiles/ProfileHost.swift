@@ -15,6 +15,15 @@ struct ProfileHost: View {
         //Text("Profile for: \(draft.username)")
         VStack(alignment: .leading, spacing: 20) {
             HStack {
+                if editMode?.wrappedValue == .active {
+                    Button {
+                        editMode?.wrappedValue = .inactive
+                        draft = Profile.default
+                    } label: {
+                        Text("Cancel")
+                    }
+
+                }
                 Spacer()
                 EditButton()
             }
