@@ -18,7 +18,7 @@ struct ProfileHost: View {
                 if editMode?.wrappedValue == .active {
                     Button {
                         editMode?.wrappedValue = .inactive
-                        draft = Profile.default
+                        draft = modelData.profile
                     } label: {
                         Text("Cancel")
                     }
@@ -31,6 +31,12 @@ struct ProfileHost: View {
                 ProfileSummary(profile: modelData.profile)
             } else {
                 ProfileEditor(profile: $draft)
+                    .onAppear {
+                        draft = modelData.profile
+                    }
+                    .onDisappear {
+                        modelData.profile = draft
+                    }
             }
             
         }
